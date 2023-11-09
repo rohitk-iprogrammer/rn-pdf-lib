@@ -84,7 +84,7 @@ export default class PDFDocument {
     return this;
   }
 
-  write = () => {
+  write = async() => {
     // console.log('Creating this PDFDocument:');
     // console.log(this.document);
     if (!this.document.path) {
@@ -96,6 +96,6 @@ export default class PDFDocument {
     if (this.document.pages.length < 1) {
       return Promise.reject('PDFDocument must have at least one page!');
     }
-    return PDFLib.createPDF(this.document);
+    return await PDFLib.createPDF(this.document);
   }
 }
